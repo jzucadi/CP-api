@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_get_fid_etail_by_id_get_fid_etail_by_ids",
+  "info": {
+    "name": "GetFIDetailById",
+    "icon": "newspaper"
+  },
+  "options": {},
+  "attributes": {
+    "StateName": {
+      "type": "string",
+      "required": true
+    },
+    "FICode": {
+      "type": "integer"
+    },
+    "StateNexusList": {
+      "type": "integer"
+    },
+    "StateNameList": {
+      "type": "string",
+      "required": true
+    },
+    "PAddressText": {
+      "type": "string",
+      "required": true
+    },
+    "FIAddress1": {
+      "type": "string",
+      "required": true
+    },
+    "FIAddress2": {
+      "type": "string"
+    },
+    "FICityName": {
+      "type": "string"
+    },
+    "FIStateCode": {
+      "type": "string"
+    },
+    "ZipPostalCode": {
+      "type": "integer"
+    },
+    "idcode": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

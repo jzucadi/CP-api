@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fis",
+  "info": {
+    "name": "FI"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "FIbyID": {
+      "type": "component",
+      "repeatable": true,
+      "component": "get-fi-detail-by-id.get-fid-etail-by-id"
+    }
+  }
+}
