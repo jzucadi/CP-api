@@ -16,7 +16,7 @@
     "FIbyID": {
       "type": "component",
       "repeatable": true,
-      "component": "get-fi-detail-by-id.get-fid-etail-by-id"
+      "component": "get-fi-detail.get-fid-etail-by-id"
     },
     "user": {
       "via": "fis",
