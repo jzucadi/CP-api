@@ -1,7 +1,7 @@
 {
   "collectionName": "components_get_fid_etail_by_id_get_fid_etail_by_ids",
   "info": {
-    "name": "GetFIDetailById",
+    "name": "GetFIDetail",
     "icon": "newspaper"
   },
   "options": {},

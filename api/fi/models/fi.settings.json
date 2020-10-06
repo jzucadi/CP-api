@@ -13,15 +13,15 @@
       "type": "string",
       "required": true
     },
-    "FIbyID": {
+    "FIDetail": {
       "type": "component",
       "repeatable": true,
       "component": "get-fi-detail.get-fid-etail-by-id"
     },
     "user": {
-      "via": "fis",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "fis"
     }
   }
 }
