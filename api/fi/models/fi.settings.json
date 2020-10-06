@@ -17,6 +17,11 @@
       "type": "component",
       "repeatable": true,
       "component": "get-fi-detail-by-id.get-fid-etail-by-id"
+    },
+    "user": {
+      "via": "fis",
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }
