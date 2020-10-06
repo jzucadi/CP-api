@@ -19,9 +19,9 @@
       "component": "get-fi-detail.get-fid-etail-by-id"
     },
     "user": {
+      "via": "fi",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "fis"
+      "model": "user"
     }
   }
 }

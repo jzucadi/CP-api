@@ -59,9 +59,9 @@
       "component": "get-fi-detail.get-fid-etail-by-id",
       "required": false
     },
-    "fis": {
-      "via": "user",
-      "collection": "fi"
+    "fi": {
+      "model": "fi",
+      "via": "user"
     }
   }
 }
