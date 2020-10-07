@@ -1,53 +1,16 @@
 {
-  "_args": [
-    [
-      "strapi-admin@3.0.1",
-      "/Users/enzo/Desktop/Repos/shield/copyjob/strapi-users"
-    ]
-  ],
-  "_from": "strapi-admin@3.0.1",
-  "_id": "strapi-admin@3.0.1",
-  "_inBundle": false,
-  "_integrity": "sha512-xEa5y2AJWpmQwnE+CBoj9HOWS5/5CSMDpgUmv/7t1xa/5z+i7D+zgNN27LjTtkrHl1Iqio5nfBCANV/R6zhrLw==",
-  "_location": "/strapi-admin",
-  "_phantomChildren": {
-    "@babel/runtime": "7.10.2",
-    "@sindresorhus/transliterate": "0.1.1",
-    "date-fns": "2.14.0",
-    "fn-name": "2.0.1",
-    "glob": "7.1.6",
-    "interpret": "1.4.0",
-    "is-docker": "2.0.0",
-    "lodash-es": "4.17.15",
-    "pino": "4.17.6",
-    "pluralize": "7.0.0",
-    "property-expr": "1.5.1",
-    "rechoir": "0.6.2",
-    "synchronous-promise": "2.0.13",
-    "toposort": "2.0.2"
+  "name": "strapi-admin",
+  "version": "3.0.1",
+  "description": "Strapi Admin",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/strapi/strapi-admin.git"
   },
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "strapi-admin@3.0.1",
-    "name": "strapi-admin",
-    "escapedName": "strapi-admin",
-    "rawSpec": "3.0.1",
-    "saveSpec": null,
-    "fetchSpec": "3.0.1"
+  "scripts": {
+    "test": "echo \"no tests yet\"",
+    "develop": "webpack-dev-server --config webpack.config.dev.js"
   },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/strapi-admin/-/strapi-admin-3.0.1.tgz",
-  "_spec": "3.0.1",
-  "_where": "/Users/enzo/Desktop/Repos/shield/copyjob/strapi-users",
-  "author": {
-    "name": "Strapi"
-  },
-  "bugs": {
-    "url": "https://github.com/strapi/strapi-admin/issues"
-  },
+  "main": "index.js",
   "dependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-async-generator-functions": "^7.2.0",
@@ -134,28 +97,22 @@
     "webpackbar": "^3.2.0",
     "yup": "^0.27.0"
   },
-  "description": "Strapi Admin",
+  "author": {
+    "name": "Strapi",
+    "email": "",
+    "url": ""
+  },
+  "maintainers": [
+    {
+      "name": "Strapi",
+      "email": "",
+      "url": ""
+    }
+  ],
   "engines": {
     "node": ">=10.0.0",
     "npm": ">=6.0.0"
   },
-  "gitHead": "5b64e05d7f565d359f28dccb9d9917124d1ad453",
-  "homepage": "https://github.com/strapi/strapi-admin#readme",
   "license": "MIT",
-  "main": "index.js",
-  "maintainers": [
-    {
-      "name": "Strapi"
-    }
-  ],
-  "name": "strapi-admin",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/strapi/strapi-admin.git"
-  },
-  "scripts": {
-    "develop": "webpack-dev-server --config webpack.config.dev.js",
-    "test": "echo \"no tests yet\""
-  },
-  "version": "3.0.1"
+  "gitHead": "5b64e05d7f565d359f28dccb9d9917124d1ad453"
 }

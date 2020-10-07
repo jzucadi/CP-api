@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "financial_institutions",
+  "info": {
+    "name": "Financial Institution"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Place": {
+      "type": "string"
+    },
+    "Details": {
+      "type": "component",
+      "repeatable": false,
+      "component": "get-fi-detail.get-fid-etail-by-id"
+    }
+  }
+}

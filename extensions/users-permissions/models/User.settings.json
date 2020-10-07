@@ -59,8 +59,13 @@
       "component": "get-fi-detail.get-fid-etail-by-id",
       "required": false
     },
-    "fi": {
-      "model": "fi"
+    "fis": {
+      "collection": "fi",
+      "via": "users",
+      "dominant": true
+    },
+    "financial_institution": {
+      "model": "financial-institution"
     }
   }
 }

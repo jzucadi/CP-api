@@ -1,0 +1,797 @@
+input ComponentGetFiDetailDetailInput {
+  _: String
+}
+
+type ComponentGetFiDetailDetails {
+  id: ID!
+}
+
+type ComponentGetFiDetailGetFidEtailById {
+  id: ID!
+  StateName: String!
+  FICode: Int
+  StateNexusList: Int
+  StateNameList: String!
+  PAddressText: String!
+  FIAddress1: String!
+  FIAddress2: String
+  FICityName: String
+  FIStateCode: String
+  ZipPostalCode: Int
+  idcode: Int!
+  Name: String
+}
+
+input ComponentGetFiDetailGetFidEtailByIdInput {
+  StateName: String!
+  FICode: Int
+  StateNexusList: Int
+  StateNameList: String!
+  PAddressText: String!
+  FIAddress1: String!
+  FIAddress2: String
+  FICityName: String
+  FIStateCode: String
+  ZipPostalCode: Int
+  idcode: Int!
+  Name: String
+}
+
+input createFiInput {
+  data: FiInput
+}
+
+input createFinancialInstitutionInput {
+  data: FinancialInstitutionInput
+}
+
+type createFinancialInstitutionPayload {
+  financialInstitution: FinancialInstitution
+}
+
+type createFiPayload {
+  fi: Fi
+}
+
+input createRoleInput {
+  data: RoleInput
+}
+
+type createRolePayload {
+  role: UsersPermissionsRole
+}
+
+input createUserInput {
+  data: UserInput
+}
+
+type createUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+input deleteFiInput {
+  where: InputID
+}
+
+input deleteFinancialInstitutionInput {
+  where: InputID
+}
+
+type deleteFinancialInstitutionPayload {
+  financialInstitution: FinancialInstitution
+}
+
+type deleteFiPayload {
+  fi: Fi
+}
+
+input deleteRoleInput {
+  where: InputID
+}
+
+type deleteRolePayload {
+  role: UsersPermissionsRole
+}
+
+input deleteUserInput {
+  where: InputID
+}
+
+type deleteUserPayload {
+  user: UsersPermissionsUser
+}
+
+input editComponentGetFiDetailDetailInput {
+  id: ID
+}
+
+input editComponentGetFiDetailGetFidEtailByIdInput {
+  id: ID
+  StateName: String
+  FICode: Int
+  StateNexusList: Int
+  StateNameList: String
+  PAddressText: String
+  FIAddress1: String
+  FIAddress2: String
+  FICityName: String
+  FIStateCode: String
+  ZipPostalCode: Int
+  idcode: Int
+  Name: String
+}
+
+input editFiInput {
+  FIDetail: [editComponentGetFiDetailGetFidEtailByIdInput]
+  users: [ID]
+}
+
+input editFileInput {
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  previewUrl: String
+  provider: String
+  provider_metadata: JSON
+  related: [ID]
+}
+
+input editFinancialInstitutionInput {
+  Name: String
+  Place: String
+  Details: editComponentGetFiDetailGetFidEtailByIdInput
+}
+
+input editRoleInput {
+  name: String
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+input editUserInput {
+  username: String
+  email: String
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  FiDetail: [editComponentGetFiDetailGetFidEtailByIdInput]
+  fis: [ID]
+  financial_institution: ID
+}
+
+type Fi {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  FIDetail: [ComponentGetFiDetailGetFidEtailById]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type FiAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type FiConnection {
+  values: [Fi]
+  groupBy: FiGroupBy
+  aggregate: FiAggregator
+}
+
+type FiConnectionCreated_at {
+  key: DateTime
+  connection: FiConnection
+}
+
+type FiConnectionId {
+  key: ID
+  connection: FiConnection
+}
+
+type FiConnectionUpdated_at {
+  key: DateTime
+  connection: FiConnection
+}
+
+type FiGroupBy {
+  id: [FiConnectionId]
+  created_at: [FiConnectionCreated_at]
+  updated_at: [FiConnectionUpdated_at]
+}
+
+input FiInput {
+  FIDetail: [ComponentGetFiDetailGetFidEtailByIdInput]
+  users: [ID]
+}
+
+input FileInput {
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related: [ID]
+}
+
+type FinancialInstitution {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  Name: String
+  Place: String
+  Details: ComponentGetFiDetailGetFidEtailById
+}
+
+type FinancialInstitutionAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type FinancialInstitutionConnection {
+  values: [FinancialInstitution]
+  groupBy: FinancialInstitutionGroupBy
+  aggregate: FinancialInstitutionAggregator
+}
+
+type FinancialInstitutionConnectionCreated_at {
+  key: DateTime
+  connection: FinancialInstitutionConnection
+}
+
+type FinancialInstitutionConnectionDetails {
+  key: ID
+  connection: FinancialInstitutionConnection
+}
+
+type FinancialInstitutionConnectionId {
+  key: ID
+  connection: FinancialInstitutionConnection
+}
+
+type FinancialInstitutionConnectionName {
+  key: String
+  connection: FinancialInstitutionConnection
+}
+
+type FinancialInstitutionConnectionPlace {
+  key: String
+  connection: FinancialInstitutionConnection
+}
+
+type FinancialInstitutionConnectionUpdated_at {
+  key: DateTime
+  connection: FinancialInstitutionConnection
+}
+
+type FinancialInstitutionGroupBy {
+  id: [FinancialInstitutionConnectionId]
+  created_at: [FinancialInstitutionConnectionCreated_at]
+  updated_at: [FinancialInstitutionConnectionUpdated_at]
+  Name: [FinancialInstitutionConnectionName]
+  Place: [FinancialInstitutionConnectionPlace]
+  Details: [FinancialInstitutionConnectionDetails]
+}
+
+input FinancialInstitutionInput {
+  Name: String
+  Place: String
+  Details: ComponentGetFiDetailGetFidEtailByIdInput
+}
+
+input InputID {
+  id: ID!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+"""The `Long` scalar type represents 52-bit integers"""
+scalar Long
+
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Fi | FiConnection | FiAggregator | FiGroupBy | FiConnectionId | FiConnectionCreated_at | FiConnectionUpdated_at | createFiPayload | updateFiPayload | deleteFiPayload | FinancialInstitution | FinancialInstitutionConnection | FinancialInstitutionAggregator | FinancialInstitutionGroupBy | FinancialInstitutionConnectionId | FinancialInstitutionConnectionCreated_at | FinancialInstitutionConnectionUpdated_at | FinancialInstitutionConnectionName | FinancialInstitutionConnectionPlace | FinancialInstitutionConnectionDetails | createFinancialInstitutionPayload | updateFinancialInstitutionPayload | deleteFinancialInstitutionPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFinancial_institution | createUserPayload | updateUserPayload | deleteUserPayload | ComponentGetFiDetailDetails | ComponentGetFiDetailGetFidEtailById
+
+type Mutation {
+  createFi(input: createFiInput): createFiPayload
+  updateFi(input: updateFiInput): updateFiPayload
+  deleteFi(input: deleteFiInput): deleteFiPayload
+  createFinancialInstitution(input: createFinancialInstitutionInput): createFinancialInstitutionPayload
+  updateFinancialInstitution(input: updateFinancialInstitutionInput): updateFinancialInstitutionPayload
+  deleteFinancialInstitution(input: deleteFinancialInstitutionInput): deleteFinancialInstitutionPayload
+
+  """Create a new role"""
+  createRole(input: createRoleInput): createRolePayload
+
+  """Update an existing role"""
+  updateRole(input: updateRoleInput): updateRolePayload
+
+  """Delete an existing role"""
+  deleteRole(input: deleteRoleInput): deleteRolePayload
+
+  """Create a new user"""
+  createUser(input: createUserInput): createUserPayload
+
+  """Update an existing user"""
+  updateUser(input: updateUserInput): updateUserPayload
+
+  """Delete an existing user"""
+  deleteUser(input: deleteUserInput): deleteUserPayload
+  upload(refId: ID, ref: String, field: String, source: String, file: Upload!): UploadFile!
+  multipleUpload(refId: ID, ref: String, field: String, source: String, files: [Upload]!): [UploadFile]!
+  login(input: UsersPermissionsLoginInput!): UsersPermissionsLoginPayload!
+  register(input: UsersPermissionsRegisterInput!): UsersPermissionsLoginPayload!
+  forgotPassword(email: String!): UserPermissionsPasswordPayload
+  resetPassword(password: String!, passwordConfirmation: String!, code: String!): UsersPermissionsLoginPayload
+  emailConfirmation(confirmation: String!): UsersPermissionsLoginPayload
+}
+
+type Query {
+  fi(id: ID!): Fi
+  fis(sort: String, limit: Int, start: Int, where: JSON): [Fi]
+  fisConnection(sort: String, limit: Int, start: Int, where: JSON): FiConnection
+  financialInstitution(id: ID!): FinancialInstitution
+  financialInstitutions(sort: String, limit: Int, start: Int, where: JSON): [FinancialInstitution]
+  financialInstitutionsConnection(sort: String, limit: Int, start: Int, where: JSON): FinancialInstitutionConnection
+  files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+  filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
+  role(id: ID!): UsersPermissionsRole
+
+  """
+  Retrieve all the existing roles. You can't apply filters on this query.
+  """
+  roles(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsRole]
+  rolesConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsRoleConnection
+  user(id: ID!): UsersPermissionsUser
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+  usersConnection(sort: String, limit: Int, start: Int, where: JSON): UsersPermissionsUserConnection
+  me: UsersPermissionsMe
+}
+
+input RoleInput {
+  name: String!
+  description: String
+  type: String
+  permissions: [ID]
+  users: [ID]
+}
+
+"""A time string with format: HH:mm:ss.SSS"""
+scalar Time
+
+input updateFiInput {
+  where: InputID
+  data: editFiInput
+}
+
+input updateFinancialInstitutionInput {
+  where: InputID
+  data: editFinancialInstitutionInput
+}
+
+type updateFinancialInstitutionPayload {
+  financialInstitution: FinancialInstitution
+}
+
+type updateFiPayload {
+  fi: Fi
+}
+
+input updateRoleInput {
+  where: InputID
+  data: editRoleInput
+}
+
+type updateRolePayload {
+  role: UsersPermissionsRole
+}
+
+input updateUserInput {
+  where: InputID
+  data: editUserInput
+}
+
+type updateUserPayload {
+  user: UsersPermissionsUser
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type UploadFile {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String!
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: JSON
+  hash: String!
+  ext: String
+  mime: String!
+  size: Float!
+  url: String!
+  previewUrl: String
+  provider: String!
+  provider_metadata: JSON
+  related(sort: String, limit: Int, start: Int, where: JSON): [Morph]
+}
+
+type UploadFileAggregator {
+  count: Int
+  totalCount: Int
+  sum: UploadFileAggregatorSum
+  avg: UploadFileAggregatorAvg
+  min: UploadFileAggregatorMin
+  max: UploadFileAggregatorMax
+}
+
+type UploadFileAggregatorAvg {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMax {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorMin {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileAggregatorSum {
+  width: Float
+  height: Float
+  size: Float
+}
+
+type UploadFileConnection {
+  values: [UploadFile]
+  groupBy: UploadFileGroupBy
+  aggregate: UploadFileAggregator
+}
+
+type UploadFileConnectionAlternativeText {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCaption {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionCreated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionExt {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionFormats {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHash {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionHeight {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionId {
+  key: ID
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionMime {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionName {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionPreviewUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionProvider_metadata {
+  key: JSON
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionSize {
+  key: Float
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUpdated_at {
+  key: DateTime
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionUrl {
+  key: String
+  connection: UploadFileConnection
+}
+
+type UploadFileConnectionWidth {
+  key: Int
+  connection: UploadFileConnection
+}
+
+type UploadFileGroupBy {
+  id: [UploadFileConnectionId]
+  created_at: [UploadFileConnectionCreated_at]
+  updated_at: [UploadFileConnectionUpdated_at]
+  name: [UploadFileConnectionName]
+  alternativeText: [UploadFileConnectionAlternativeText]
+  caption: [UploadFileConnectionCaption]
+  width: [UploadFileConnectionWidth]
+  height: [UploadFileConnectionHeight]
+  formats: [UploadFileConnectionFormats]
+  hash: [UploadFileConnectionHash]
+  ext: [UploadFileConnectionExt]
+  mime: [UploadFileConnectionMime]
+  size: [UploadFileConnectionSize]
+  url: [UploadFileConnectionUrl]
+  previewUrl: [UploadFileConnectionPreviewUrl]
+  provider: [UploadFileConnectionProvider]
+  provider_metadata: [UploadFileConnectionProvider_metadata]
+}
+
+input UserInput {
+  username: String!
+  email: String!
+  provider: String
+  password: String
+  resetPasswordToken: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: ID
+  FiDetail: [ComponentGetFiDetailGetFidEtailByIdInput]
+  fis: [ID]
+  financial_institution: ID
+}
+
+type UserPermissionsPasswordPayload {
+  ok: Boolean!
+}
+
+input UsersPermissionsLoginInput {
+  identifier: String!
+  password: String!
+  provider: String = "local"
+}
+
+type UsersPermissionsLoginPayload {
+  jwt: String!
+  user: UsersPermissionsMe!
+}
+
+type UsersPermissionsMe {
+  id: ID!
+  username: String!
+  email: String!
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsMeRole
+}
+
+type UsersPermissionsMeRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+}
+
+type UsersPermissionsPermission {
+  id: ID!
+  type: String!
+  controller: String!
+  action: String!
+  enabled: Boolean!
+  policy: String
+  role: UsersPermissionsRole
+}
+
+input UsersPermissionsRegisterInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+type UsersPermissionsRole {
+  id: ID!
+  name: String!
+  description: String
+  type: String
+  permissions(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsPermission]
+  users(sort: String, limit: Int, start: Int, where: JSON): [UsersPermissionsUser]
+}
+
+type UsersPermissionsRoleAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsRoleConnection {
+  values: [UsersPermissionsRole]
+  groupBy: UsersPermissionsRoleGroupBy
+  aggregate: UsersPermissionsRoleAggregator
+}
+
+type UsersPermissionsRoleConnectionDescription {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionId {
+  key: ID
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionName {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleConnectionType {
+  key: String
+  connection: UsersPermissionsRoleConnection
+}
+
+type UsersPermissionsRoleGroupBy {
+  id: [UsersPermissionsRoleConnectionId]
+  name: [UsersPermissionsRoleConnectionName]
+  description: [UsersPermissionsRoleConnectionDescription]
+  type: [UsersPermissionsRoleConnectionType]
+}
+
+type UsersPermissionsUser {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  username: String!
+  email: String!
+  provider: String
+  confirmed: Boolean
+  blocked: Boolean
+  role: UsersPermissionsRole
+  FiDetail: [ComponentGetFiDetailGetFidEtailById]
+  financial_institution: FinancialInstitution
+  fis(sort: String, limit: Int, start: Int, where: JSON): [Fi]
+}
+
+type UsersPermissionsUserAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type UsersPermissionsUserConnection {
+  values: [UsersPermissionsUser]
+  groupBy: UsersPermissionsUserGroupBy
+  aggregate: UsersPermissionsUserAggregator
+}
+
+type UsersPermissionsUserConnectionBlocked {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionConfirmed {
+  key: Boolean
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionCreated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionEmail {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionFinancial_institution {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionId {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionProvider {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionRole {
+  key: ID
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUpdated_at {
+  key: DateTime
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserConnectionUsername {
+  key: String
+  connection: UsersPermissionsUserConnection
+}
+
+type UsersPermissionsUserGroupBy {
+  id: [UsersPermissionsUserConnectionId]
+  created_at: [UsersPermissionsUserConnectionCreated_at]
+  updated_at: [UsersPermissionsUserConnectionUpdated_at]
+  username: [UsersPermissionsUserConnectionUsername]
+  email: [UsersPermissionsUserConnectionEmail]
+  provider: [UsersPermissionsUserConnectionProvider]
+  confirmed: [UsersPermissionsUserConnectionConfirmed]
+  blocked: [UsersPermissionsUserConnectionBlocked]
+  role: [UsersPermissionsUserConnectionRole]
+  financial_institution: [UsersPermissionsUserConnectionFinancial_institution]
+}

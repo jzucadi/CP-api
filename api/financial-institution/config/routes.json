@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/financial-institutions",
+      "handler": "financial-institution.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/financial-institutions/count",
+      "handler": "financial-institution.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/financial-institutions/:id",
+      "handler": "financial-institution.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/financial-institutions",
+      "handler": "financial-institution.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/financial-institutions/:id",
+      "handler": "financial-institution.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/financial-institutions/:id",
+      "handler": "financial-institution.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
