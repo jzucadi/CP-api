@@ -9,19 +9,15 @@
     "timestamps": true
   },
   "attributes": {
-    "Name": {
-      "type": "string",
-      "required": true
-    },
     "FIDetail": {
       "type": "component",
       "repeatable": true,
       "component": "get-fi-detail.get-fid-etail-by-id"
     },
     "user": {
-      "via": "fi",
       "plugin": "users-permissions",
-      "model": "user"
+      "model": "user",
+      "via": "fi"
     }
   }
 }

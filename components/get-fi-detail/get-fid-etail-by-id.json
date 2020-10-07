@@ -43,6 +43,9 @@
     "idcode": {
       "type": "integer",
       "required": true
+    },
+    "Name": {
+      "type": "string"
     }
   }
 }
