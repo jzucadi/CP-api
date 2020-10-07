@@ -60,7 +60,6 @@
       "required": false
     },
     "fi": {
-      "via": "user",
       "model": "fi"
     }
   }
