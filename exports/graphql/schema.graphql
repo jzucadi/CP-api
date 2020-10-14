@@ -1,3 +1,52 @@
+type BusinessTable {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  data: JSON
+}
+
+type BusinessTableAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type BusinessTableConnection {
+  values: [BusinessTable]
+  groupBy: BusinessTableGroupBy
+  aggregate: BusinessTableAggregator
+}
+
+type BusinessTableConnectionCreated_at {
+  key: DateTime
+  connection: BusinessTableConnection
+}
+
+type BusinessTableConnectionData {
+  key: JSON
+  connection: BusinessTableConnection
+}
+
+type BusinessTableConnectionId {
+  key: ID
+  connection: BusinessTableConnection
+}
+
+type BusinessTableConnectionUpdated_at {
+  key: DateTime
+  connection: BusinessTableConnection
+}
+
+type BusinessTableGroupBy {
+  id: [BusinessTableConnectionId]
+  created_at: [BusinessTableConnectionCreated_at]
+  updated_at: [BusinessTableConnectionUpdated_at]
+  data: [BusinessTableConnectionData]
+}
+
+input BusinessTableInput {
+  data: JSON
+}
+
 input ComponentGetFiDetailDetailInput {
   _: String
 }
@@ -35,6 +84,22 @@ input ComponentGetFiDetailGetFidEtailByIdInput {
   ZipPostalCode: Int
   idcode: Int!
   Name: String
+}
+
+input createBusinessTableInput {
+  data: BusinessTableInput
+}
+
+type createBusinessTablePayload {
+  businessTable: BusinessTable
+}
+
+input createDocumentsTableInput {
+  data: DocumentsTableInput
+}
+
+type createDocumentsTablePayload {
+  documentsTable: DocumentsTable
 }
 
 input createFiInput {
@@ -83,6 +148,22 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
 """
 scalar DateTime
 
+input deleteBusinessTableInput {
+  where: InputID
+}
+
+type deleteBusinessTablePayload {
+  businessTable: BusinessTable
+}
+
+input deleteDocumentsTableInput {
+  where: InputID
+}
+
+type deleteDocumentsTablePayload {
+  documentsTable: DocumentsTable
+}
+
 input deleteFiInput {
   where: InputID
 }
@@ -115,6 +196,59 @@ type deleteUserPayload {
   user: UsersPermissionsUser
 }
 
+type DocumentsTable {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  user_docs: JSON
+}
+
+type DocumentsTableAggregator {
+  count: Int
+  totalCount: Int
+}
+
+type DocumentsTableConnection {
+  values: [DocumentsTable]
+  groupBy: DocumentsTableGroupBy
+  aggregate: DocumentsTableAggregator
+}
+
+type DocumentsTableConnectionCreated_at {
+  key: DateTime
+  connection: DocumentsTableConnection
+}
+
+type DocumentsTableConnectionId {
+  key: ID
+  connection: DocumentsTableConnection
+}
+
+type DocumentsTableConnectionUpdated_at {
+  key: DateTime
+  connection: DocumentsTableConnection
+}
+
+type DocumentsTableConnectionUser_docs {
+  key: JSON
+  connection: DocumentsTableConnection
+}
+
+type DocumentsTableGroupBy {
+  id: [DocumentsTableConnectionId]
+  created_at: [DocumentsTableConnectionCreated_at]
+  updated_at: [DocumentsTableConnectionUpdated_at]
+  user_docs: [DocumentsTableConnectionUser_docs]
+}
+
+input DocumentsTableInput {
+  user_docs: JSON
+}
+
+input editBusinessTableInput {
+  data: JSON
+}
+
 input editComponentGetFiDetailDetailInput {
   id: ID
 }
@@ -133,6 +267,10 @@ input editComponentGetFiDetailGetFidEtailByIdInput {
   ZipPostalCode: Int
   idcode: Int
   Name: String
+}
+
+input editDocumentsTableInput {
+  user_docs: JSON
 }
 
 input editFiInput {
@@ -326,9 +464,15 @@ scalar JSON
 """The `Long` scalar type represents 52-bit integers"""
 scalar Long
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | Fi | FiConnection | FiAggregator | FiGroupBy | FiConnectionId | FiConnectionCreated_at | FiConnectionUpdated_at | createFiPayload | updateFiPayload | deleteFiPayload | FinancialInstitution | FinancialInstitutionConnection | FinancialInstitutionAggregator | FinancialInstitutionGroupBy | FinancialInstitutionConnectionId | FinancialInstitutionConnectionCreated_at | FinancialInstitutionConnectionUpdated_at | FinancialInstitutionConnectionName | FinancialInstitutionConnectionPlace | FinancialInstitutionConnectionDetails | createFinancialInstitutionPayload | updateFinancialInstitutionPayload | deleteFinancialInstitutionPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFinancial_institution | createUserPayload | updateUserPayload | deleteUserPayload | ComponentGetFiDetailDetails | ComponentGetFiDetailGetFidEtailById
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UsersPermissionsLoginPayload | UserPermissionsPasswordPayload | BusinessTable | BusinessTableConnection | BusinessTableAggregator | BusinessTableGroupBy | BusinessTableConnectionId | BusinessTableConnectionCreated_at | BusinessTableConnectionUpdated_at | BusinessTableConnectionData | createBusinessTablePayload | updateBusinessTablePayload | deleteBusinessTablePayload | DocumentsTable | DocumentsTableConnection | DocumentsTableAggregator | DocumentsTableGroupBy | DocumentsTableConnectionId | DocumentsTableConnectionCreated_at | DocumentsTableConnectionUpdated_at | DocumentsTableConnectionUser_docs | createDocumentsTablePayload | updateDocumentsTablePayload | deleteDocumentsTablePayload | Fi | FiConnection | FiAggregator | FiGroupBy | FiConnectionId | FiConnectionCreated_at | FiConnectionUpdated_at | createFiPayload | updateFiPayload | deleteFiPayload | FinancialInstitution | FinancialInstitutionConnection | FinancialInstitutionAggregator | FinancialInstitutionGroupBy | FinancialInstitutionConnectionId | FinancialInstitutionConnectionCreated_at | FinancialInstitutionConnectionUpdated_at | FinancialInstitutionConnectionName | FinancialInstitutionConnectionPlace | FinancialInstitutionConnectionDetails | createFinancialInstitutionPayload | updateFinancialInstitutionPayload | deleteFinancialInstitutionPayload | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileAggregatorSum | UploadFileAggregatorAvg | UploadFileAggregatorMin | UploadFileAggregatorMax | UploadFileGroupBy | UploadFileConnectionId | UploadFileConnectionCreated_at | UploadFileConnectionUpdated_at | UploadFileConnectionName | UploadFileConnectionAlternativeText | UploadFileConnectionCaption | UploadFileConnectionWidth | UploadFileConnectionHeight | UploadFileConnectionFormats | UploadFileConnectionHash | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionPreviewUrl | UploadFileConnectionProvider | UploadFileConnectionProvider_metadata | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnectionId | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnectionId | UsersPermissionsUserConnectionCreated_at | UsersPermissionsUserConnectionUpdated_at | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole | UsersPermissionsUserConnectionFinancial_institution | createUserPayload | updateUserPayload | deleteUserPayload | ComponentGetFiDetailDetails | ComponentGetFiDetailGetFidEtailById
 
 type Mutation {
+  createBusinessTable(input: createBusinessTableInput): createBusinessTablePayload
+  updateBusinessTable(input: updateBusinessTableInput): updateBusinessTablePayload
+  deleteBusinessTable(input: deleteBusinessTableInput): deleteBusinessTablePayload
+  createDocumentsTable(input: createDocumentsTableInput): createDocumentsTablePayload
+  updateDocumentsTable(input: updateDocumentsTableInput): updateDocumentsTablePayload
+  deleteDocumentsTable(input: deleteDocumentsTableInput): deleteDocumentsTablePayload
   createFi(input: createFiInput): createFiPayload
   updateFi(input: updateFiInput): updateFiPayload
   deleteFi(input: deleteFiInput): deleteFiPayload
@@ -363,6 +507,12 @@ type Mutation {
 }
 
 type Query {
+  businessTable(id: ID!): BusinessTable
+  businessTables(sort: String, limit: Int, start: Int, where: JSON): [BusinessTable]
+  businessTablesConnection(sort: String, limit: Int, start: Int, where: JSON): BusinessTableConnection
+  documentsTable(id: ID!): DocumentsTable
+  documentsTables(sort: String, limit: Int, start: Int, where: JSON): [DocumentsTable]
+  documentsTablesConnection(sort: String, limit: Int, start: Int, where: JSON): DocumentsTableConnection
   fi(id: ID!): Fi
   fis(sort: String, limit: Int, start: Int, where: JSON): [Fi]
   fisConnection(sort: String, limit: Int, start: Int, where: JSON): FiConnection
@@ -394,6 +544,24 @@ input RoleInput {
 
 """A time string with format: HH:mm:ss.SSS"""
 scalar Time
+
+input updateBusinessTableInput {
+  where: InputID
+  data: editBusinessTableInput
+}
+
+type updateBusinessTablePayload {
+  businessTable: BusinessTable
+}
+
+input updateDocumentsTableInput {
+  where: InputID
+  data: editDocumentsTableInput
+}
+
+type updateDocumentsTablePayload {
+  documentsTable: DocumentsTable
+}
 
 input updateFiInput {
   where: InputID

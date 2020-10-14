@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/documents-tables",
+      "handler": "documents-table.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/documents-tables/count",
+      "handler": "documents-table.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/documents-tables/:id",
+      "handler": "documents-table.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/documents-tables",
+      "handler": "documents-table.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/documents-tables/:id",
+      "handler": "documents-table.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/documents-tables/:id",
+      "handler": "documents-table.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
